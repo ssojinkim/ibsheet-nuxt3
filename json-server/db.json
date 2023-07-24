@@ -1,4 +1,312 @@
 {
-  "rowItems": [],
-  "colItems": []
+  "rowItems": [
+    {
+      "id": 1,
+      "name": "김소진",
+      "team": "FE팀",
+      "role": "프로",
+      "phoneNumber": "010-3543-5165",
+      "age": "24",
+      "birthDate": "1998-10-09",
+      "meal": "F"
+    },
+    {
+      "name": "rrr",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 2
+    },
+    {
+      "name": "asdfas",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 3
+    },
+    {
+      "name": ";al;aa;",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 5
+    },
+    {
+      "name": "qqqq",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 7
+    },
+    {
+      "name": "",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 8
+    },
+    {
+      "name": "kasjglkas",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 9
+    },
+    {
+      "name": "sadf;al",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 10
+    },
+    {
+      "name": "eeeee",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 11
+    },
+    {
+      "name": "gggg",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 12
+    },
+    {
+      "name": "ggdd",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 13
+    },
+    {
+      "name": "aassddff",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 14
+    },
+    {
+      "name": "aa",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 15
+    },
+    {
+      "name": "22",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 16
+    },
+    {
+      "name": "33",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 17
+    },
+    {
+      "name": "44",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 18
+    },
+    {
+      "name": "4455",
+      "team": "",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 19
+    }
+  ],
+  "colItems": [
+    {
+      "caption": [
+        "이름"
+      ],
+      "type": "input",
+      "ref": "name",
+      "width": "100px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "oneclickedit": true,
+        "hideeditesckey": true
+      }
+    },
+    {
+      "caption": [
+        "소속"
+      ],
+      "type": "combo",
+      "ref": "team",
+      "width": "100px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "ref": [
+          {
+            "label": "FE팀",
+            "value": "FE팀"
+          },
+          {
+            "label": "BE팀",
+            "value": "BE팀"
+          },
+          {
+            "label": "DX팀",
+            "value": "DX팀"
+          }
+        ],
+        "label": "label",
+        "value": "value",
+        "oneclickedit": true,
+        "displayui": true
+      }
+    },
+    {
+      "caption": [
+        "직급"
+      ],
+      "type": "combo",
+      "ref": "role",
+      "width": "100px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "ref": [
+          {
+            "label": "팀장",
+            "value": "팀장"
+          },
+          {
+            "label": "파트장",
+            "value": "파트장"
+          },
+          {
+            "label": "프로",
+            "value": "프로"
+          }
+        ],
+        "label": "label",
+        "value": "value",
+        "oneclickedit": true,
+        "displayui": true
+      }
+    },
+    {
+      "caption": [
+        "전화번호"
+      ],
+      "type": "input",
+      "ref": "phoneNumber",
+      "width": "150px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "autofillinput": {
+          "type": "phone",
+          "filldata": true
+        },
+        "oneclickedit": true,
+        "hideeditesckey": true
+      }
+    },
+    {
+      "caption": [
+        "생년월일"
+      ],
+      "type": "datepicker",
+      "ref": "birthDate",
+      "width": "150px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "dateformat": "yyyy-mm-dd",
+        "displayui": true,
+        "yearrange": 50,
+        "oneclickedit": true,
+        "hideeditesckey": true
+      }
+    },
+    {
+      "caption": [
+        "나이"
+      ],
+      "type": "spinner",
+      "ref": "age",
+      "width": "50px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "min": 1,
+        "oneclickedit": true,
+        "hideeditesckey": true
+      }
+    },
+    {
+      "caption": [
+        "식대지급"
+      ],
+      "type": "checkbox",
+      "ref": "meal",
+      "width": "80px",
+      "style": "text-align:center",
+      "typeinfo": {
+        "checkedvalue": "T",
+        "uncheckedvalue": "F",
+        "fixedcellcheckbox": {
+          "usemode": true,
+          "rowindex": 0,
+          "deletecaption": false
+        }
+      }
+    }
+  ]
 }

@@ -1,123 +1,11 @@
 <script setup>
 import SbGrid from "/components/SbGrid.vue";
 import CreateModal from "~/components/CreateModal.vue";
+import UpdateModal from "~/components/UpdateModal.vue";
 
 const gridId = "grid1";
-const gridData = ref([]);
-const gridColumns = ref([
-  {
-    caption: ["이름"],
-    type: "input",
-    ref: "name",
-    width: "100px",
-    style: "text-align:center",
-    typeinfo: { oneclickedit: true, hideeditesckey: true },
-  },
-  {
-    caption: ["소속"],
-    type: "combo",
-    ref: "team",
-    width: "100px",
-    style: "text-align:center",
-    typeinfo: {
-      ref: [
-        {
-          label: "FE팀",
-          value: "FE팀",
-        },
-        {
-          label: "BE팀",
-          value: "BE팀",
-        },
-        {
-          label: "DX팀",
-          value: "DX팀",
-        },
-      ],
-      label: "label",
-      value: "value",
-      oneclickedit: true,
-      displayui: true,
-    },
-  },
-  {
-    caption: ["직급"],
-    type: "combo",
-    ref: "role",
-    width: "100px",
-    style: "text-align:center",
-    typeinfo: {
-      ref: [
-        {
-          label: "팀장",
-          value: "팀장",
-        },
-        {
-          label: "파트장",
-          value: "파트장",
-        },
-        {
-          label: "프로",
-          value: "프로",
-        },
-      ],
-      label: "label",
-      value: "value",
-      oneclickedit: true,
-      displayui: true,
-    },
-  },
-  {
-    caption: ["전화번호"],
-    type: "input",
-    ref: "phoneNumber",
-    width: "150px",
-    style: "text-align:center",
-    typeinfo: {
-      autofillinput: { type: "phone", filldata: true },
-      oneclickedit: true,
-      hideeditesckey: true,
-    },
-  },
-  {
-    caption: ["생년월일"],
-    type: "datepicker",
-    ref: "birthDate",
-    width: "150px",
-    style: "text-align:center",
-    typeinfo: {
-      dateformat: "yyyy-mm-dd",
-      displayui: true,
-      yearrange: 50,
-      oneclickedit: true,
-      hideeditesckey: true,
-    },
-  },
-  {
-    caption: ["나이"],
-    type: "spinner",
-    ref: "age",
-    width: "50px",
-    style: "text-align:center",
-    typeinfo: { min: 1, oneclickedit: true, hideeditesckey: true },
-  },
-  {
-    caption: ["식대지급"],
-    type: "checkbox",
-    ref: "meal",
-    width: "80px",
-    style: "text-align:center",
-    typeinfo: {
-      checkedvalue: "T",
-      uncheckedvalue: "F",
-      fixedcellcheckbox: {
-        usemode: true,
-        rowindex: 0,
-        deletecaption: false,
-      },
-    },
-  },
-]);
+const gridData = await $fetch("http://localhost:3001/rowItems");
+const gridColumns = await $fetch("http://localhost:3001/colItems");
 const gridAttributes = ref([
   {
     rowheight: "30",
@@ -126,48 +14,56 @@ const gridAttributes = ref([
     saveorgdata: true,
   },
 ]);
+const showCreateModal = ref(false);
+const showUpdateModal = ref(false);
 
-onMounted(() => {
-  const gridObject = window._SBGrid.getGrid(gridId);
-  // console.log("gridObject", gridObject);
-  getMembers(gridObject);
-});
-
-const getMembers = async (gridObject) => {
+const createItem = async (item) => {
   try {
-    const response = await fetch("api/items");
-    if (response.ok) {
-      const { items } = await response.json();
-      gridData.value = items;
-      gridObject.addRows(gridData.value, true);
-    } else {
-      console.error(response);
-    }
+    await $fetch("http://localhost:3001/rowItems", {
+      method: "post",
+      body: item,
+    });
+    const gridObject = window._SBGrid.getGrid(gridId);
+    gridObject.addRow(true, item, true);
+    showCreateModal.value = false;
   } catch (err) {
     console.error(err);
   }
 };
 
-const createMembers = async (data) => {
-  console.log("createdata", data);
-  const gridObject = window._SBGrid.getGrid(gridId);
-  const rowIdx = gridObject.getLastFocusRow();
-  if (rowIdx === -1) {
-    gridObject.addRow(true, data, true);
-  } else {
-    gridObject.setRowData(rowIdx, data);
-  }
+const updateItem = async (item) => {
   try {
-    data.meal = data.meal ? "T" : "F";
-    await fetch("api/items", { method: "POST", body: JSON.stringify(data) });
+    await $fetch(`http://localhost:3001/rowItems/${item.id}`, {
+      method: "put",
+      body: item,
+    });
+    const gridObject = window._SBGrid.getGrid(gridId);
+    gridObject.setRowData(item.id, item);
+    showUpdateModal.value = false;
   } catch (err) {
     console.error(err);
   }
+};
+
+const deleteItem = async () => {
+  const gridObject = window._SBGrid.getGrid(gridId);
+  const rowIdx = gridObject.getRow();
+  await $fetch(`http://localhost:3001/rowItems/${rowIdx}`, {
+    method: "delete",
+  });
+  gridObject.deleteRow(rowIdx);
 };
 </script>
 
 <template>
   <div>
+    <button class="btn" @click="showCreateModal = !showCreateModal">
+      등록
+    </button>
+    <button class="btn" @click="showUpdateModal = !showUpdateModal">
+      수정
+    </button>
+    <button class="btn" @click="deleteItem">삭제</button>
     <SbGrid
       :id="gridId"
       :parentId="gridId"
@@ -175,9 +71,18 @@ const createMembers = async (data) => {
       :columns="gridColumns"
       :gridattr="gridAttributes"
     />
-    <!--    <button @click="createMembers">등록</button>-->
-    <CreateModal @create="createMembers" />
+    <CreateModal v-if="showCreateModal" @create="createItem" />
+    <UpdateModal v-if="showUpdateModal" @update="updateItem" />
   </div>
 </template>
 
-<style></style>
+<style>
+.btn {
+  margin: 0px 10px 10px 0px;
+  padding: 10px 20px;
+  color: #212d5d;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+</style>
