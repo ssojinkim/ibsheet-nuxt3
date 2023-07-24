@@ -38,6 +38,5 @@ export default defineNuxtConfig({
       ],
     },
   },
-  plugins: ["~/plugins/mirage"],
   devtools: { enabled: true },
 });

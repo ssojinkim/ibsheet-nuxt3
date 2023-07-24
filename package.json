@@ -19,7 +19,6 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.15.1",
-    "miragejs": "^0.1.47",
     "nuxt": "^3.6.3",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6"
