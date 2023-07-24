@@ -48,10 +48,21 @@ const updateItem = async (item) => {
 const deleteItem = async () => {
   const gridObject = window._SBGrid.getGrid(gridId);
   const rowIdx = gridObject.getRow();
-  await $fetch(`http://localhost:3001/rowItems/${rowIdx}`, {
+  const item = gridObject.getRowData(rowIdx);
+  await $fetch(`http://localhost:3001/rowItems/${item.id}`, {
     method: "delete",
   });
   gridObject.deleteRow(rowIdx);
+};
+
+const downloadData = () => {
+  const gridObject = window._SBGrid.getGrid(gridId);
+  gridObject.exportData("csv", "sbgrid_data");
+};
+
+const uploadData = (e) => {
+  const gridObject = window._SBGrid.getGrid(gridId);
+  gridObject.importExcelData(e);
 };
 </script>
 
@@ -64,9 +75,12 @@ const deleteItem = async () => {
       수정
     </button>
     <button class="btn" @click="deleteItem">삭제</button>
+    <button class="btn" @click="downloadData">엑셀 다운로드</button>
+    <input type="file" @change="uploadData" />
     <SbGrid
       :id="gridId"
       :parentId="gridId"
+      style="width: auto; height: 500px"
       :data="gridData"
       :columns="gridColumns"
       :gridattr="gridAttributes"

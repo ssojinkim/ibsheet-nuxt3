@@ -1,7 +1,7 @@
 {
   "rowItems": [
     {
-      "id": 1,
+      "id": 0,
       "name": "김소진",
       "team": "FE팀",
       "role": "프로",
@@ -12,7 +12,17 @@
     },
     {
       "name": "rrr",
-      "team": "",
+      "team": "FE팀",
+      "role": "",
+      "phoneNumber": "",
+      "age": "",
+      "birthDate": "",
+      "meal": false,
+      "id": 1
+    },
+    {
+      "name": "asdfas",
+      "team": "FE팀",
       "role": "",
       "phoneNumber": "",
       "age": "",
@@ -21,8 +31,8 @@
       "id": 2
     },
     {
-      "name": "asdfas",
-      "team": "",
+      "name": ";al;aa;",
+      "team": "BE팀",
       "role": "",
       "phoneNumber": "",
       "age": "",
@@ -31,54 +41,14 @@
       "id": 3
     },
     {
-      "name": ";al;aa;",
-      "team": "",
+      "name": "",
+      "team": "BE팀",
       "role": "",
       "phoneNumber": "",
       "age": "",
       "birthDate": "",
       "meal": false,
       "id": 5
-    },
-    {
-      "name": "qqqq",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 7
-    },
-    {
-      "name": "",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 8
-    },
-    {
-      "name": "kasjglkas",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 9
-    },
-    {
-      "name": "sadf;al",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 10
     },
     {
       "name": "eeeee",
@@ -88,27 +58,7 @@
       "age": "",
       "birthDate": "",
       "meal": false,
-      "id": 11
-    },
-    {
-      "name": "gggg",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 12
-    },
-    {
-      "name": "ggdd",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 13
+      "id": 6
     },
     {
       "name": "aassddff",
@@ -118,7 +68,7 @@
       "age": "",
       "birthDate": "",
       "meal": false,
-      "id": 14
+      "id": 7
     },
     {
       "name": "aa",
@@ -128,7 +78,7 @@
       "age": "",
       "birthDate": "",
       "meal": false,
-      "id": 15
+      "id": 8
     },
     {
       "name": "22",
@@ -138,7 +88,7 @@
       "age": "",
       "birthDate": "",
       "meal": false,
-      "id": 16
+      "id": 9
     },
     {
       "name": "33",
@@ -148,17 +98,7 @@
       "age": "",
       "birthDate": "",
       "meal": false,
-      "id": 17
-    },
-    {
-      "name": "44",
-      "team": "",
-      "role": "",
-      "phoneNumber": "",
-      "age": "",
-      "birthDate": "",
-      "meal": false,
-      "id": 18
+      "id": 10
     },
     {
       "name": "4455",
@@ -168,7 +108,7 @@
       "age": "",
       "birthDate": "",
       "meal": false,
-      "id": 19
+      "id": 12
     }
   ],
   "colItems": [

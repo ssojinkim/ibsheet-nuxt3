@@ -14,6 +14,7 @@ onMounted(() => {
     jsonref: data,
     columns: columns,
     checkboximage: true,
+    mergecells: "bycol",
   };
 
   window._SBGrid.create(SBGridProperties);
