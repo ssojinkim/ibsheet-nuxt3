@@ -4,6 +4,7 @@ import CreateModal from "~/components/CreateModal.vue";
 import UpdateModal from "~/components/UpdateModal.vue";
 
 const gridId = "grid1";
+const gridId2 = "grid2";
 const gridData = await $fetch("http://localhost:3001/rowItems");
 const gridColumns = await $fetch("http://localhost:3001/colItems");
 const gridAttributes = ref([
@@ -64,6 +65,12 @@ const uploadData = (e) => {
   const gridObject = window._SBGrid.getGrid(gridId);
   gridObject.importExcelData(e);
 };
+
+const sortItems = (e) => {
+  const gridObject = window._SBGrid.getGrid(gridId);
+  const colIdx = gridObject.getCol();
+  gridObject.sortColumn(colIdx, e.target.value);
+};
 </script>
 
 <template>
@@ -77,10 +84,22 @@ const uploadData = (e) => {
     <button class="btn" @click="deleteItem">삭제</button>
     <button class="btn" @click="downloadData">엑셀 다운로드</button>
     <input type="file" @change="uploadData" />
+    <select @change="sortItems">
+      <option value="asc">오름차순</option>
+      <option value="desc">내림차순</option>
+    </select>
     <SbGrid
       :id="gridId"
       :parentId="gridId"
       style="width: auto; height: 500px"
+      :data="gridData"
+      :columns="gridColumns"
+      :gridattr="gridAttributes"
+    />
+    <SbGrid
+      :id="gridId2"
+      :parentId="gridId"
+      style="width: auto; height: 200px"
       :data="gridData"
       :columns="gridColumns"
       :gridattr="gridAttributes"
