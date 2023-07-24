@@ -5,12 +5,12 @@ export default defineNuxtPlugin(({ environment = "development" } = {}) => {
     environment,
 
     models: {
-      member: Model,
+      item: Model,
     },
 
     seeds(server) {
-      server.create("member", {
-        id: 0,
+      server.create("item", {
+        id: 1,
         name: "김소진",
         team: "FE팀",
         role: "프로",
@@ -24,16 +24,26 @@ export default defineNuxtPlugin(({ environment = "development" } = {}) => {
     routes() {
       this.namespace = "api";
 
-      this.get("/members", (schema) => {
-        return schema.members.all();
+      this.get("/items", (schema) => {
+        return schema.items.all();
       });
 
-      this.post("/members", (schema, request) => {
-        let attrs = JSON.parse(request.requestBody);
-        return schema.create("members", attrs);
+      this.post("/items", (schema, request) => {
+        const attrs = JSON.parse(request.requestBody);
+        return schema.items.create(attrs);
+      });
+
+      this.put("/items/:id", (schema, request) => {
+        const newAttrs = JSON.parse(request.requestBody);
+        const id = request.params.id;
+        const item = schema.items.find(id);
+        return item.update(newAttrs);
+      });
+
+      this.delete("items/:id", (schema, request) => {
+        const id = request.params.id;
+        return schema.items.find(id).destroy();
       });
     },
   });
-
-  return server;
 });

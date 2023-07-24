@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { makeServer } from "~/mirage/mirage";
 
 export default defineNuxtConfig({
   app: {

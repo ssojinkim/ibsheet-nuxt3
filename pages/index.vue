@@ -129,16 +129,16 @@ const gridAttributes = ref([
 
 onMounted(() => {
   const gridObject = window._SBGrid.getGrid(gridId);
-  console.log("gridObject", gridObject);
+  // console.log("gridObject", gridObject);
   getMembers(gridObject);
 });
 
 const getMembers = async (gridObject) => {
   try {
-    const response = await fetch("/api/members");
+    const response = await fetch("api/items");
     if (response.ok) {
-      const { members } = await response.json();
-      gridData.value = members;
+      const { items } = await response.json();
+      gridData.value = items;
       gridObject.addRows(gridData.value, true);
     } else {
       console.error(response);
@@ -158,7 +158,8 @@ const createMembers = async (data) => {
     gridObject.setRowData(rowIdx, data);
   }
   try {
-    await fetch("/api/members", { method: "POST", body: JSON.stringify(data) });
+    data.meal = data.meal ? "T" : "F";
+    await fetch("api/items", { method: "POST", body: JSON.stringify(data) });
   } catch (err) {
     console.error(err);
   }
